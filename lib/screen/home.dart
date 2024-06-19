@@ -65,28 +65,56 @@ class _MyHomePageState extends State<HomePage> {
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
                 final categoria = snapshot.data![index];
-                return ElevatedButton.icon(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => ContenidoPage(categoriaId: categoria['id'], token: widget.token)),
-                    );
-                    // Navigator.pushNamed(
-                    //   context,
-                    //   '/contenido',
-                    //   arguments: categoria['id'],
-                    // );
-                  },
-                  label: Text(categoria['name']),
-                  icon: const Icon(Icons.arrow_forward),
+                return SafeArea(
+                  child: Padding(
+                    padding: EdgeInsets.all(15),
+                    child: Center(
+                      child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                        children : [
+                          Container(
+                            width: double.infinity,
+                            child: ElevatedButton.icon(
+                              onPressed: () {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => ContenidoPage(categoriaId: categoria['id'], token: widget.token)),
+                                );
+                              // Navigator.pushNamed(
+                              //   context,
+                              //   '/contenido',
+                              //   arguments: categoria['id'],
+                              // );
+                              },
+                              label: Text(categoria['name'],
+                                style:TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                ),
+                              ),
+                              icon: const Icon(Icons.radio_button_unchecked),
+                              style: ElevatedButton.styleFrom(
+                                padding: const EdgeInsets.all(15),
+                                alignment: Alignment.centerLeft,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                            ),  
+                          ),
+                          SizedBox(height: 3),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                },
                 );
-              },
-            );
-          } else if (snapshot.hasError) {
-            return Center(child: Text("${snapshot.error}"));
-          }
-          return const Center(child: CircularProgressIndicator());
-        },
+              } else if (snapshot.hasError) {
+                return Center(child: Text("${snapshot.error}"));
+              }
+              return const Center(child: CircularProgressIndicator());
+            },
       ),
     );
   }

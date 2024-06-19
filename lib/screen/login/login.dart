@@ -19,7 +19,7 @@ class BaseLoginPageState extends State<LoginPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children:[
             const Icon(Icons.android, size: 200, color:Colors.greenAccent),
-            ElevatedButton(onPressed: () => {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignInPage()),)},child: Text('signin')),
+            ElevatedButton(onPressed: () => {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignInPage()),)},child: Text('Sign In')),
             ElevatedButton(onPressed: () => {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RegisterPage()),)},child: Text('Register')),
             // ElevatedButton(onPressed: () => {Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()),)},child: Text('Home')),
           ],
